@@ -119,9 +119,18 @@ function getResultNum($sql)
 
 
 
+function _query($_sql){
+    if(!$_result=mysql_query($_sql)){
+        echo mysql_error();
+    }
+    return $_result;
+}
 
-
-
+function _sql_close(){
+    if(!mysql_close()){
+        exit('SQL关闭异常！');
+    }
+}
 
 
 

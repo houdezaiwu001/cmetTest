@@ -14,5 +14,6 @@ require_once 'admin.inc.php';
 
 require_once 'cate.inc.php';
 require_once 'upload.func.php';
-
+require_once 'add-question.func.php';
+require_once 'footer.inc.php';
 connect();
