@@ -65,6 +65,24 @@ function editAdmin($id){
     
 }
 
+/**
+ * 更新题目操作
+ * @param string $id
+ * @return string
+ */
+function changeTest($id){
+    $arr = $_POST;
+    
+    if(update("cmet_question", $arr,"id ={$id}")){
+        $mes= "<script type='text/javascript'>alert('修改成功！');location.href='listTest.php'; </script>";
+
+    }else{
+        $mes= "<script type='text/javascript'>alert('修改失败！');location.href='listTest.php'; </script>";
+    }
+    return $mes;
+
+}
+
 
 /**
  * 删除管理员操作
@@ -76,6 +94,21 @@ function delAdmin($id){
         $mes="删除成功<br/><a href='listAdmin.php'>查看管理员列表</a>";
     }else{
         $mes="删除失败<br/><a href='listAdmin.php'>请重新删除</a>";
+    }
+    return $mes;
+}
+
+
+/**
+ * 删除试题
+ * @param int $id
+ * @return string
+ */
+function delTest($id){
+    if(delete("cmet_question","id={$id}")){
+ $mes= "<script type='text/javascript'>alert('删除成功！');location.href='listTest.php'; </script>";
+    }else{
+ $mes= "<script type='text/javascript'>alert('删除失败！');location.href='listTest.php'; </script>";
     }
     return $mes;
 }

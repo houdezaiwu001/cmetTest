@@ -79,6 +79,9 @@ if ($rows == null) {
                         </tbody>
 		</table>
 	</div>
+	<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/base.js"></script>
 </body>
 <script type="text/javascript">
 

@@ -48,12 +48,18 @@ if($act=="logout"){
     )");
     if (mysql_affected_rows()==1) {
         _sql_close();
-        $mes= "<script type='text/javascript'>alert('添加成功！');location.href='listadmin.php'; </script>";
+        $mes= "<script type='text/javascript'>alert('添加成功！');location.href='listTest.php'; </script>";
     }else{
         _sql_close();
-        $mes= "<script type='text/javascript'>alert('添加失败！');location.href='listAdmin.php'; </script>";
+        $mes= "<script type='text/javascript'>alert('添加失败！');location.href='listTest.php'; </script>";
         
     }
+}elseif ($act=='change-xz'){
+
+    $mes = changeTest($id);
+
+}elseif ($act=="delTest"){
+    $mes = delTest($id);
 }
 
 
