@@ -1,155 +1,111 @@
-<?php
-if ($_POST['action'] == 'add-pd') {
-    include ROOT_PATH . 'includes/add-question.func.php';
-    $_add_pd = array();
-    $_add_pd['content'] = _check_content($_POST['content']);
-    $_add_pd['answer'] = $_POST['answer'];
-    _query("INSERT INTO tg_question_pd(
-        content,
-        answer
-    ) VALUES(
-        '{$_add_pd['content']}',
-        '{$_add_pd['answer']}'
-    )");
-    if (mysql_affected_rows() == 1) {
-        _sql_close();
-        _location('添加成功！', 'listTest.php');
-    } else {
-        _sql_close();
-        _location('添加失败！', 'listTest.php');
-    }
-}
+<?php 
+require_once '../include.php';
+$id = $_REQUEST['id'];
+var_dump($id);
+$sql ="select question,item1,item2,item3,item4,answer from cmet_question where id ='{$id}'";
+$row = fetchOne($sql);
+var_dump($sql);
+var_dump($row);
 ?>
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!doctype html>
 <html>
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<head>
+<meta charset="utf-8">
+<title>考试系统</title>
+<link rel="stylesheet" href="styles/backstage.css">
+
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+</head>
+
 <body>
-	<div id="wrapper">
-
-		<div id="main-content">
-			<div id="side-bar">
-				<nav>
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#user-info" data-toggle="tab">参赛人员信息</a></li>
-						<li class><a href="#alert-time" data-toggle="tab">修改比赛时间</a></li>
-						<li class><a href="#alert-pass" data-toggle="tab">修改登录密码</a></li>
-						<li class><a href="#question-bank" data-toggle="tab">管理题库</a></li>
-						<li class><a href="#check-grade" data-toggle="tab">查看成绩</a></li>
-					</ul>
-				</nav>
-			</div>
-			<div id="content-panel" class="tab-content">
-
-
-
-				<div class="tab-pane fade" id="question-bank">
-					<div id="question-bank-center">
-						<h4>
-							当前题库共有选择题 <strong><?php echo $_question_xz_num; ?></strong> 道，判断题
-							<strong><?php echo $_question_pd_num; ?></strong> 道
-						</h4>
-					</div>
-					<div id="question-bank-left">
-						<p>
-							<button id="button-add-question-xz" type="button"
-								class="btn btn-primary">>> 添加一道选择题到题库</button>
-						</p>
-						<div id="add-question-xz" class="hidden">
-							<form method="post" action="doAdminAction.php"
-								class="form-horizontal margin-top-20px" role="form">
-								<input type="hidden" name="action" value="add-xz" />
-								<div class="form-group">
-									<div class="col-sm-10">
-										<textarea name="content" class="form-control" rows="3"
-											placeholder="题目内容..."></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-10">
-										<input type="text" name="mark_a" class="form-control"
-											placeholder="选项 1">
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-10">
-										<input type="text" name="mark_b" class="form-control"
-											placeholder="选项 2">
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-10">
-										<input type="text" name="mark_c" class="form-control"
-											placeholder="选项 3">
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-10">
-										<input type="text" name="mark_d" class="form-control"
-											placeholder="选项 4">
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-10">
-										<label class="radio-inline"> <input type="radio" name="answer"
-											value="1" checked="checked"> 1
-										</label> <label class="radio-inline"> <input type="radio"
-											name="answer" value="2"> 2
-										</label> <label class="radio-inline"> <input type="radio"
-											name="answer" value="3"> 3
-										</label> <label class="radio-inline"> <input type="radio"
-											name="answer" value="4"> 4
-										</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-10">
-										<button type="submit" class="btn btn-primary">确认添加</button>
-									</div>
-								</div>
-							</form>
-						</div>
-						<p>
-							<button id="button-add-question-pd" type="button"
-								class="btn btn-primary">>> 添加一道判断题到题库</button>
-						</p>
-						<div id="add-question-pd" class="hidden">
-							<form method="post" action="admin.php"
-								class="form-horizontal margin-top-20px" role="form">
-								<input type="hidden" name="action" value="add-pd" />
-								<div class="form-group">
-									<div class="col-sm-10">
-										<textarea name="content" class="form-control" rows="3"
-											placeholder="题目内容..."></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-10">
-										<label class="radio-inline"> <input type="radio" name="answer"
-											value="1" checked="checked"> 正确
-										</label> <label class="radio-inline"> <input type="radio"
-											name="answer" value="0"> 错误
-										</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-10">
-										<button type="submit" class="btn btn-primary">确认添加</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<!--#question-bank-left-->
-
-				</div>
-
-				<div class="clear"></div>
-			</div>
-			<!--#content-panel-->
-		
-	
-			<? include '../lib/footer.inc.php'; ?>
+	<div class="details">
+		<div class="details_operation clearfix">
+			<input type="button" value="添&nbsp;&nbsp;加" class="btn btn-primary "
+				onclick="addTest()">
 		</div>
+		<div class="modal-body">
+
+            <h3>编辑题目</h3>
+			
+			<form method='post' class='form-horizontal margin-top-20px'
+				role='form' action="doAdminAction.php?act=change-xz&id=<?php echo $id;?>">
+
+
+
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input name="question" class="form-control" rows="3"
+							value="<?php echo $row['question'];?>" id="question">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="text" name="item1" class="form-control"
+							value=<?php echo $row['item1'];?> id='item1'>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="text" name="item2" class="form-control"
+							value=<?php echo $row['item2'];?> id='item2'>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="text" name="item3" class="form-control"
+							value=<?php echo $row['item3'];?> id='item3'>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="text" name="item4" class="form-control"
+							value=<?php echo $row['item4'];?> id='item4'>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<label class="radio-inline"> <input type="radio" name="answer"
+							value="1"
+							<?php if($row['answer']==1) echo "checked='checked'";?>>
+							1
+						</label> 
+						<label class="radio-inline"> <input type="radio"
+							name="answer" value="2"
+							<?php if($row['answer']==2) echo "checked='checked'";?>>
+							2
+						</label> 
+						<label class="radio-inline"> <input type="radio"
+							name="answer" value="3"
+							<?php if($row['answer']==3) echo "checked='checked'";?>>
+							3
+						</label> 
+						<label class="radio-inline"> <input type="radio"
+							name="answer" value="4"
+							<?php if($row['answer']==4) echo "checked='checked'";?>>
+							4
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<button type="submit" class="btn btn-primary">确认修改</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+
 </body>
+<script type="text/javascript">
+
+function addTest(){ 
+	window.location="addTest.php";
+}
+
+</script>
 </html>

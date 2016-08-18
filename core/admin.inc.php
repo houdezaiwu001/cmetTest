@@ -77,7 +77,7 @@ function changeTest($id){
         $mes= "<script type='text/javascript'>alert('修改成功！');location.href='listTest.php'; </script>";
 
     }else{
-        $mes= "<script type='text/javascript'>alert('修改失败！');location.href='listTest.php'; </script>";
+        $mes= "<script type='text/javascript'>alert('修改失败！'); </script>";
     }
     return $mes;
 
