@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>管理员登录</title>
+    <title>用户登录</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -33,19 +33,15 @@
 
     <div class="container">
 
-      <form action="doLogin.php" method="post">
-        <h2 class="form-signin-heading">请输入账号密码</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
+      <form action="doUserAction.php?act=addUser" method="post">
+        <h2 class="form-signin-heading">请输入您的账号、密码和邮箱</h2>
+        <label for="inputEmail" class="sr-only">Account</label>
         <input type="text" id="inputEmail" class="form-control" name="username"  placeholder="账号" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control"  name="password" placeholder="密码" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" id="a1" class="checked" name="autoFlag" value="1">
-                                自动登陆(一周内有效)
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" id="inputEmail" class="form-control"  name="email" placeholder="邮箱" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
       </form>
 
     </div> <!-- /container -->

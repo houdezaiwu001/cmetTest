@@ -1,14 +1,24 @@
 <?php
-require_once '../include.php';
+//require_once '../include.php';
     
 /**
- * 检查该用户是否存在
+ * 检查该管理员是否存在
  * @param string $sql
  * @return multitype:
  */
 function checkAdmin($sql){
     return fetchOne($sql);
 }
+
+/**
+ * 检查该用户是否存在
+ * @param string $sql
+ * @return multitype:
+ */
+function checkUser($sql){
+    return fetchOne($sql);
+}
+
 
 /**
  * 检查是否已登录
@@ -18,6 +28,17 @@ function checkLogined(){
         alertMes("请先登录","login.php");
     }
 }
+
+
+/**
+ * 检查是否已登录
+ */
+function checkUserLogined(){
+    if(@$_SESSION['userId']==""&&$_COOKIE['userId']==""){
+        alertMes("请先登录","login.php");
+    }
+}
+
 
 /**
  * 添加管理员操作
@@ -33,6 +54,24 @@ function addAdmin(){
     }
     return $mes;
 }
+
+
+/**
+ * 添加用户操作
+ * @return string
+ */
+function addUser(){
+    $arr = $_POST;
+    $arr['password'] = md5($_POST['password']);
+    if(insert("cmet_user", $arr)){
+    
+        alertMes("注册成功", "login.php");
+   }else{
+       alertMes("注册失败", "login.php");
+    }
+    //return $mes;
+}
+
 
 
 /**
@@ -81,6 +120,20 @@ function changeTest($id){
     }
     return $mes;
 
+}
+
+/**
+ * 记录学生做题答案
+ */
+function marktest(){
+    $arr=$_POST;
+
+    if(insert("cmet_answer", $arr)){
+
+        //alertMes("注册成功", "login.php");
+    }else{
+        // alertMes("注册失败", "login.php");
+    }
 }
 
 

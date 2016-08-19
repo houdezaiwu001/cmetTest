@@ -1,5 +1,5 @@
 <?php
-require_once'../include.php';
+//require_once'../include.php';
 // $sql="select * from cmet_admin";
 // $totalRows = getResultNum($sql);
 // //echo $totalRows;

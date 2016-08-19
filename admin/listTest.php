@@ -67,11 +67,16 @@ if ($rows == null) {
 				</tr>
 			</thead>
 			<tbody>
-                        <?php  $i=1;foreach($rows as $row):?>
-                            <tr>
+                 <?php  $i=1;foreach($rows as $row):?>
+                   <tr>
 					<!--这里的id和for里面的c1 需要循环出来  onclick="editTest(<?php echo $row['id'];?>)"-->
-					<td><input type="checkbox" id="c1" class="check"><label for="c1"
-						class="label"><?php echo $row['id'];?></label></td>
+					<td>
+					<input type="checkbox" id="c1" class="check">
+					<label for="c1"
+						class="label">
+						<?php echo $row['id'];?>
+						</label>
+					</td>
 					<td><?php echo $row['question'];?></td>
 					<td><?php echo $row['item1'];?></td>
 					<td><?php echo $row['item2'];?></td>
@@ -84,12 +89,12 @@ if ($rows == null) {
 						onclick="delTest(<?php echo $row['id'];?>)">
 					</td>
 				</tr>
-                            <?php $i++; endforeach;?>
-                            <?php if($totalRows>$pageSize):?>
+                <?php $i++; endforeach;?>
+                <?php if($totalRows>$pageSize):?>
                   <tr>
 					<td colspan="8"><?php echo showPage($page, $totalPage);?></td>
 				</tr>
-                            <?php  endif;?>
+                <?php  endif;?>
              </tbody>
 		</table>
 
@@ -100,6 +105,7 @@ if ($rows == null) {
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/base.js"></script>
 </body>
+
 <script type="text/javascript">
 
     function addTest(){ 

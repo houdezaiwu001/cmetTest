@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>管理员登录</title>
+    <title>用户登录</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
         <div class="checkbox">
           <label>
             <input type="checkbox" id="a1" class="checked" name="autoFlag" value="1">
-                                自动登陆(一周内有效)
+                                自动登陆(一周内有效)   <a href="register.php">还没账号？注册</a>
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
