@@ -14,7 +14,7 @@
 //     echo '<a href="backstage.php"><button type="button" class=" btn btn-xs btn-primary ">后台登录</button></a>';
 // }
 // ?>
-</footer>
-<!-- <script src="js/jquery.js"></script> -->
-<!-- <script src="js/bootstrap.min.js"></script> -->
-<!-- <script src="js/base.js"></script> -->
+<!-- </footer> -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/base.js"></script>

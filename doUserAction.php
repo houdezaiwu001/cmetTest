@@ -4,7 +4,7 @@ require_once 'include.php';
 $act = $_REQUEST['act'];
 $id = $_REQUEST['id'];
 if($act=="logout"){
-    logout();
+    userLogout();
 }elseif ($act=="addUser"){
     $mes=addUser();
 }elseif ($act=="editAdmin"){

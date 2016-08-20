@@ -28,6 +28,7 @@ if ($rows == null) {
     alertMes("sorry,没有试题，请先添加", "editTest.php");
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -41,15 +42,17 @@ if ($rows == null) {
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-<![endif]--></head>
-<body>
+<![endif]-->
+</head>
+<body style="background-color: #778899 ">
 	<div id="wrapper">
-			<div id="header">
-	<div class="header-info">
-		<img src="images/logo.png" />
+		<div id="header">
+	      <div class="header-info">
+<!-- 		<img src="images/logo.png" /> -->
 		<h3>在线测试系统</h3>
 	</div>
 </div>
+
 <nav id="navigation">
 	<ul>
 		<li class="nav-active"><a>考生：
@@ -63,6 +66,7 @@ if ($rows == null) {
             </a>
          </li>
          <li><a>考试编号：7d64c675a00afd6faed5da5a188a067b9660a715</a></li>	
+         <li><a href="doUserAction.php?act=logout" class="icon icon_e">退出</a></li>
     </ul>
 </nav>			
 <div id="compete-content">
@@ -77,26 +81,37 @@ if ($rows == null) {
 	   <p>D：<?php echo $row['item4'];?></p>
 	</div><!--#question-mark-->
 	<div id="question-select">
+	<?php 
+	
+	if(isset($_SESSION['userName'])){
+	    $username=$_SESSION['userName'];
+	}elseif(isset($_COOKIE['userName'])){
+	    $username=$_COOKIE['userName'];
+	}
+	$question_id= $row['id'];
+	?>
 	<form method="post" action="compete.php?username=<?php 
-				if(isset($_SESSION['userName'])){
-					echo $_SESSION['userName'];
-				}elseif(isset($_COOKIE['userName'])){
-					echo $_COOKIE['userName'];
-				}
-            ?>&question_id=<?php echo $row['id'];?>&page=<?php echo $page;?>"  id="next-form">
+            echo $username;?>&question_id=<?php echo $row['id'];?>&page=<?php echo $page;?>"  id="next-form">
+            <?php $sql_answer="select answer from cmet_answer where username='{$username}' and question_id='{$question_id}'";
+               if(mysql_query($sql_answer)){
+                   $result=mysql_query($sql_answer);
+                   $row = mysql_fetch_array($result, MYSQL_ASSOC);
+                   $answer=$row['answer'];
+               }
+            ?>
 	   <input type="hidden" name="action" value="question" />
 	     <label>
-	     <input type="radio" name="mark" value="1" class="radio-dot" />
+	     <input type="radio" name="mark" value="1" class="radio-dot" <?php if($answer==1) echo "checked='checked'";?>/>
 	       <span>&nbsp;&nbsp;A</span>
 	     </label>
 	     <label>
-	     <input type="radio" name="mark" value="2" class="radio-dot" />
+	     <input type="radio" name="mark" value="2" class="radio-dot" <?php if($answer==2) echo "checked='checked'";?>/>
 	     <span>&nbsp;&nbsp;B</span>
 	     </label>
 	     <label>
-	     <input type="radio" name="mark" value="3" class="radio-dot" />
+	     <input type="radio" name="mark" value="3" class="radio-dot" <?php if($answer==3) echo "checked='checked'";?>/>
 	     <span>&nbsp;&nbsp;C</span></label>
-	     <label><input type="radio" name="mark" value="4" class="radio-dot" />
+	     <label><input type="radio" name="mark" value="4" class="radio-dot" <?php if($answer==4) echo "checked='checked'";?>/>
 	     <span>&nbsp;&nbsp;D</span></label>
 	     <input type="submit" value="下一题" class="btn btn-primary next-question" />
 	 </form>

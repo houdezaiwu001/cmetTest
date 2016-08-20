@@ -184,3 +184,25 @@ function logout(){
     session_destroy();
     header("location:login.php");
 }
+
+
+/**
+ * 注销用户
+ */
+function userLogout(){
+    $_SESSION = array();
+    if(isset($_COOKIE[session_name])){
+        setcookie(session_name(),"",time()-1);
+    }
+    if(isset($_COOKIE['userId'])){
+        setcookie("userId","",time()-1);
+    }
+    if(isset($_COOKIE['userName'])){
+        setcookie("userName","",time()-1);
+    }
+    session_destroy();
+    header("location:login.php");
+}
+
+
+

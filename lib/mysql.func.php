@@ -50,7 +50,7 @@ function update($table, $array, $where = null)
         $str.= $sep.$key."='".$val."'";
     }
     $sql = "update {$table} set {$str} ".($where == null ? null : " where ".$where);
-    var_dump($sql);
+//     var_dump($sql);
     $result = mysql_query($sql);
 //     var_dump($result);
 //     var_dump(mysql_affected_rows());
