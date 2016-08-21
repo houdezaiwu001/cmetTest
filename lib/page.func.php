@@ -22,13 +22,13 @@
 // $rows=fetchAll($sql);
 // print_r($sql);
 // print_r($rows);
-foreach($rows as $row){
-    echo "编号:".$row['id']."<br/>";
-    echo "管理员的名称:".$row['username']."<hr/>";
-}
-echo showPage($page, $totalPage);
-echo "<hr/>";
-echo showPage($page, $totalPage,"cid=5&pid=6");
+// foreach($rows as $row){
+//     echo "编号:".$row['id']."<br/>";
+//     echo "管理员的名称:".$row['username']."<hr/>";
+// }
+// echo showPage($page, $totalPage);
+// echo "<hr/>";
+// echo showPage($page, $totalPage,"cid=5&pid=6");
 function showPage($page,$totalPage,$where=null,$sep="&nbsp;"){
      $where=($where==null)?null:"&".$where;
     $url=$_SERVER['PHP_SELF'];
