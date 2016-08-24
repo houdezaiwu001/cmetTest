@@ -1,13 +1,12 @@
 <?php
 require_once 'include.php';
-checkUserLogined();
+//checkUserLogined();
 // echo phpinfo();
 $sql = "select * from cmet_question";
 $totalRows = getResultNum($sql);
 // echo $totalRows;
 
-$pageSize = 2
-;
+$pageSize = 1;
 $totalPage = ceil($totalRows / $pageSize);
 
 $page = $_REQUEST['page'] ? (int) $_REQUEST['page'] : 1;

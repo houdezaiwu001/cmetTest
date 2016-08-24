@@ -63,12 +63,19 @@ function addAdmin(){
 function addUser(){
     $arr = $_POST;
     $arr['password'] = md5($_POST['password']);
-    if(insert("cmet_user", $arr)){
-    
-        alertMes("注册成功", "login.php");
-   }else{
-       alertMes("注册失败", "login.php");
+    if($arr['username']!=null&$arr['password']!=null){
+        if(insert("cmet_user", $arr)){
+        
+//             alertMes("注册成功", "login.php");
+            return "success";
+        }else{
+            alertMes("注册失败", "login.php");
+            return "fail";
+        }
+    }else{
+        return "fail";
     }
+    
     //return $mes;
 }
 
