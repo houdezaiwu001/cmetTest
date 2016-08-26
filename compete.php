@@ -2,13 +2,21 @@
 require_once 'include.php';
 $username = $_REQUEST['username'];
 $question_id = $_REQUEST['question_id'];
-$answer = $_POST['mark'];
+if($_POST['mark']==null){
+    $answer = $_POST['answer'];
+}else{
+    $answer = $_POST['mark'];
+}
+
 $arr = array(
     "username" => $username,
     "question_id" => $question_id,
     "answer" => $answer
 );
 
+if($_REQUEST['page']==null)
+    $page=1;
+    
 $page = $_REQUEST['page'] + 1;
 $url = "index.php?page=" . $page;
 $sql = "select * from cmet_answer where username='{$username}' and question_id='{$question_id}'";
