@@ -34,7 +34,7 @@
     <div class="container">
 
       <form action="doLogin.php" method="post">
-        <h2 class="form-signin-heading">请输入账号密码</h2>
+        <h3 class="form-signin-heading">管理员登录</h3>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="text" id="inputEmail" class="form-control" name="username"  placeholder="账号" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>

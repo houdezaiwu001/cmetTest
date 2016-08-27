@@ -49,35 +49,30 @@ if ($_POST['action'] == 'add-pd') {
 <body>
 	<div id="wrapper">
 
-		<div id="main-content">
-			<div id="side-bar">
-				<nav>
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#user-info" data-toggle="tab">参赛人员信息</a></li>
-						<li class><a href="#alert-time" data-toggle="tab">修改比赛时间</a></li>
-						<li class><a href="#alert-pass" data-toggle="tab">修改登录密码</a></li>
-						<li class><a href="#question-bank" data-toggle="tab">管理题库</a></li>
-						<li class><a href="#check-grade" data-toggle="tab">查看成绩</a></li>
-					</ul>
-				</nav>
-			</div>
+<!-- 		<div id="main-content"> -->
+<!-- 			<div id="side-bar"> -->
+<!-- 				<nav> -->
+<!-- 					<ul class="nav nav-tabs"> -->
+<!-- 					<li class="active"><a href="#user-info" data-toggle="tab">参赛人员信息</a></li> -->
+<!-- 						<li class><a href="#alert-time" data-toggle="tab">修改比赛时间</a></li> -->
+<!-- 						<li class><a href="#alert-pass" data-toggle="tab">修改登录密码</a></li> --> 
+<!-- 						<li class><a href="#question-bank" data-toggle="tab">管理题库</a></li> -->
+					<!-- 	<li class><a href="#check-grade" data-toggle="tab">查看成绩</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</nav> -->
+<!-- 			</div> -->
 			<div id="content-panel" class="tab-content">
 
 
 
-				<div class="tab-pane fade" id="question-bank">
-					<div id="question-bank-center">
-						<h4>
-							当前题库共有选择题 <strong><?php echo $_question_xz_num; ?></strong> 道，判断题
-							<strong><?php echo $_question_pd_num; ?></strong> 道
-						</h4>
-					</div>
-					<div id="question-bank-left">
-						<p>
-							<button id="button-add-question-xz" type="button"
-								class="btn btn-primary">>> 添加一道选择题到题库</button>
-						</p>
-						<div id="add-question-xz" class="hidden">
+<!-- 				<div class="tab-pane fade" id="question-bank"> -->
+					
+<!-- 					<div id="question-bank-left"> -->
+<!-- 						<p> -->
+<!-- 							<button id="button-add-question-xz" type="button" -->
+<!-- 								class="btn btn-primary">>> 添加一道选择题到题库</button> -->
+<!-- 						</p> -->
+						<div id="add-question-xz" style="position: relative;left:70px;right:70px;margin:70px">
 							<form method="post" action="doAdminAction.php"
 								class="form-horizontal margin-top-20px" role="form">
 								<input type="hidden" name="action" value="add-xz" />
@@ -131,10 +126,10 @@ if ($_POST['action'] == 'add-pd') {
 								</div>
 							</form>
 						</div>
-						<p>
+						<!-- <p>
 							<button id="button-add-question-pd" type="button"
 								class="btn btn-primary">>> 添加一道判断题到题库</button>
-						</p>
+						</p> -->
 						<div id="add-question-pd" class="hidden">
 							<form method="post" action="admin.php"
 								class="form-horizontal margin-top-20px" role="form">

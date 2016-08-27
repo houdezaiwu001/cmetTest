@@ -1,11 +1,11 @@
 <?php 
 require_once '../include.php';
 $id = $_REQUEST['id'];
-var_dump($id);
+// var_dump($id);
 $sql ="select question,item1,item2,item3,item4,answer from cmet_question where id ='{$id}'";
 $row = fetchOne($sql);
-var_dump($sql);
-var_dump($row);
+// var_dump($sql);
+// var_dump($row);
 ?>
 <!doctype html>
 <html>
