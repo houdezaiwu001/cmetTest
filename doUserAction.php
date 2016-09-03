@@ -19,6 +19,11 @@ connect();
 
 
 
+
+
+
+
+
 $act = $_REQUEST['act'];
 $id = $_REQUEST['id'];
 
@@ -91,6 +96,38 @@ if($act=="logout"){
 
 }elseif ($act=="delTest"){
     $mes = delTest($id);
+}elseif ($act=="startTest"){
+    
+    $username=$_POST['username'];
+    $status=$_POST['status'];
+    $sql = "select * from cmet_status where username='{$username}'";
+    $sql_update="update cmet_status set status='{$status}' where username='{$username}'";
+    
+    if (getResultNum($sql)) {
+        if (mysql_query($sql_update)) {
+            echo "<script>window.location='{$url}';</script>";
+        } 
+    } else {
+   
+        $mes = insertStatus();
+    }
+    
+}elseif ($act=="completeTest"){
+    
+    $username=$_POST['username'];
+    $status=$_POST['status'];
+    $sql = "select * from cmet_status where username='{$username}'";
+    $sql_update="update cmet_status set status='{$status}' where username='{$username}'";
+    
+    if (getResultNum($sql)) {
+        if (mysql_query($sql_update)) {
+            echo "<script>window.location='{$url}';</script>";
+        } 
+    } else {
+   
+        $mes = insertStatus();
+    }
+    
 }
 
 $arr=array('responseCode'=>$mes);

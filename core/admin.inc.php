@@ -212,4 +212,26 @@ function userLogout(){
 }
 
 
+/**
+ * 记录用户开始考试status
+ * @return string
+ */
+function insertStatus(){
+    $arr = $_POST;
+    if($arr['username']!=null&$arr['status']!=null){
+        if(insert("cmet_status", $arr)){
+
+            //             alertMes("注册成功", "login.php");
+            return "success";
+        }else{
+           
+            return "fail";
+        }
+    }else{
+        return "fail";
+    }
+
+    //return $mes;
+}
+
 
